@@ -1,7 +1,7 @@
 package program;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -11,13 +11,13 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Path: ");
 		String path = sc.nextLine();
+		String[] amigos = new String[] {"Neymar", "Batman", "Goku"};
 		
-		try(BufferedReader br = new BufferedReader(new FileReader(path)))
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(path, true)))
 		{
-			String line = br.readLine();
-			while(line != null) {
-				System.out.println(line);
-				line = br.readLine();
+			for(String friends: amigos) {
+				bw.write(friends);
+				bw.newLine();
 			}
 		}catch(IOException e) {
 			e.printStackTrace();
